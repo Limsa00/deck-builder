@@ -11,5 +11,7 @@ router.get('/search', searchController.searchPage);
 
 router.get('/card/:id', cardController.cardDetails);
 
+router.get('/search/element', cardController.cardsByElement)
+
 
 module.exports = router;

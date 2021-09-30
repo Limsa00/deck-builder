@@ -17,9 +17,24 @@ const dataMapper = {
         callback(error,null);
       }
     })
-  }
-  
-};
+  },
 
+  findByElement: (element, callback) =>{
+    let sql = `SELECT * FROM card WHERE element = $1;`;
+    let values = [element];
 
-module.exports = dataMapper;
+    if (element === 'null') {
+      sql = `SELECT * FROM "card" WHERE "element" IS NULL`;
+      values = [];
+    }
+
+    database.query( sql, values, (err, data) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, data.rows);
+      }
+    });
+  },
+}
+  module.exports = dataMapper;

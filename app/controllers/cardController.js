@@ -17,6 +17,23 @@ const cardController = {
                 // res.send('détail de la carte');
             }
         })
+    },
+
+    cardsByElement:(req,res) =>{
+        const element = req.query.element;
+
+        dataMapper.findByElement(element, (error, result)=>{
+            if (error) {
+                res.status(500).send('Erreur dans la base de données');
+            } else
+            if (!result) {
+                res.status(404).send('Cette élément est vide')
+            } else {
+                res.render('cardsByElement', {
+                    cards:result
+                });
+            }
+        })
     }
 }
 
