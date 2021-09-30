@@ -1,0 +1,17 @@
+<%- include('header') %>
+
+<div class="cardDetail">
+    <p>Nom de la carte : <%= card.name %></p>
+    <% if (card.element) { %> 
+        <p>Elément de la carte : <%= card.element %></p>
+    <% } else { %> 
+        <p>Elément de la carte : information indisponible</p>
+    <% } %> 
+    <p>Niveau de la carte : <%= card.level %></p>
+    <p>Valeur Nord : <%= card.value_north %></p>
+    <p>Valeur Est : <%= card.value_east %></p>
+    <p>Valeur Sud : <%= card.value_south %></p>
+    <p>Valeur Ouest : <%= card.value_west %></p>
+</div>
+
+<%- include('footer') %>
