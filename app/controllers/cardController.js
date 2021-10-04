@@ -51,6 +51,25 @@ const cardController = {
                 });
             }
         })
+    },
+
+    cardsByValues:(req,res)=>{
+        const direction = req.query.direction;
+        const level = req.query.value;
+
+        dataMapper.findByValue(direction, level, (error,result)=>{
+            // console.log(req.query);
+            if (error) {
+                res.status(500).send('Erreur dans la base de données');
+            } else
+            if (!result) {
+                res.status(404).send('Pas de carte dans ce niveau')
+            } else {
+                res.render('deck', {
+                    cards:result
+                });
+            }
+        })
     }
 
 }

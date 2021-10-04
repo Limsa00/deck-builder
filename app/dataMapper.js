@@ -47,6 +47,24 @@ const dataMapper = {
         callback(null, data.rows);
       };
     });
+  },
+
+  findByValue:(direction,value, callback)=>{
+    let sql = `SELECT * FROM card WHERE ${direction} = $1 ;`
+
+    const values = [value];
+
+    // console.log(values);
+
+    database.query(sql,values,(err,data)=>{
+      // console.log(sql,values)
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, data.rows);
+        // console.log(data.rows);
+      };
+    });
   }
 }
   module.exports = dataMapper;
