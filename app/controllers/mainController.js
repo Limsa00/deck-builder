@@ -11,6 +11,8 @@ const mainController = {
         title: 'Liste des cartes'
       })
     });
+
+    // console.log('deck : ', req.session.deck);
   }
 };
 

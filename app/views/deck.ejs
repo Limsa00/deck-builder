@@ -1,0 +1,21 @@
+<%- include('header') %>
+
+<div class="cardsContainer">
+    <% if (!cards) { %> 
+        <p>Votre deck ne contient aucune carte</p>
+    <% } else { %>     
+        <% cards.forEach( (card) => { %>
+    
+        <div class="card">
+            <a href="/card/<%= card.id %>">
+            <img src="/visuals/<%= card.visual_name %>" alt="<%= card.name %> illustration">
+            <p class="cardName"><%= card.name %></p>
+            </a>
+            <a class="link--addCard" title="retirer du deck" href="deck/remove/<%= card.id %>">[ - ]</a>
+        </div>
+    
+        <% }) %>
+    <% } %> 
+  </div>
+
+<%- include('footer') %>
