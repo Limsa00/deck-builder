@@ -36,5 +36,17 @@ const dataMapper = {
       }
     });
   },
+
+  findByLevel:(level, callback)=>{
+    let sql = `SELECT * FROM card WHERE level = $1;`;
+    
+    database.query(sql, [level], (err,data)=>{
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, data.rows);
+      };
+    });
+  }
 }
   module.exports = dataMapper;

@@ -29,12 +29,29 @@ const cardController = {
             if (!result) {
                 res.status(404).send('Cette élément est vide')
             } else {
-                res.render('cardsByElement', {
+                res.render('deck', {
                     cards:result
                 });
             }
         })
     },
+
+    cardsByLevel:(req,res)=>{
+        const level = parseInt(req.query.level,10);
+
+        dataMapper.findByLevel(level,(error,result)=>{
+            if (error) {
+                res.status(500).send('Erreur dans la base de données');
+            } else
+            if (!result) {
+                res.status(404).send('Pas de carte dans ce niveau')
+            } else {
+                res.render('deck', {
+                    cards:result
+                });
+            }
+        })
+    }
 
 }
 

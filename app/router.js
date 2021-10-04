@@ -12,9 +12,9 @@ router.get('/search', searchController.searchPage);
 router.get('/card/:id', cardController.cardDetails);
 
 router.get('/search/element', cardController.cardsByElement);
+router.get('/search/level', cardController.cardsByLevel);
 
 router.get('/deck', deckController.deckContent);
-
 router.get('/deck/add/:id', deckController.addCard);
 router.get('/deck/remove/:id', deckController.removeCard);
 
